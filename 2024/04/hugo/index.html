@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko-kr" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Hugo를 이용해 개발 블로그 구축하기 | Devlog</title>
+
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Devlog</h1>
+<div class="menu">
+    
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+</div>
+
+  </header>
+  <main>
+    
+  <header class="post-header">
+    <h1>Hugo를 이용해 개발 블로그 구축하기</h1>
+
+    
+    
+    <time datetime="2024-04-28T23:26:40&#43;09:00">April 28, 2024</time>
+    
+  <div class="taxonomy-block">
+    <p class="taxonomy-label">Tags</p>
+    <ul class="taxonomy-list">
+        <li class="taxonomy-item"><a href="/tags/hugo/">Hugo</a></li>
+        <li class="taxonomy-item"><a href="/tags/howto/">Howto</a></li>
+    </ul>
+  </div>
+
+  </header>
+  <aside>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#_설치하기">설치하기</a></li>
+    <li><a href="#_블로그_시작하기">블로그 시작하기</a></li>
+    <li><a href="#_블로그_구축하기">블로그 구축하기</a></li>
+  </ul>
+</nav>
+  </aside>
+  <article class="post-content">
+    
+<div class="sect1">
+<h2 id="_설치하기">설치하기</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>hugo와 asciidoctor를 설치한다.
+특별한 설정이나 버전에 대한 문제는 없으니 일단 컨테이너는 안쓰고 로컬에 설치해본다.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Debian: <code>sudo apt install hugo asciidoctor</code></p>
+</li>
+<li>
+<p>추가로 vscode에서 asciidoc 공식 확장을 설치하면 좋다.</p>
+</li>
+<li>
+<p>참고</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://gohugo.io/installation/linux/">hugo 설치 공식문서</a></p>
+</li>
+<li>
+<p><a href="https://docs.asciidoctor.org/asciidoctor/latest/install/linux-packaging/">asciidoctor 설치 공식문서</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_블로그_시작하기">블로그 시작하기</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><code>hugo version</code>으로 제대로 설치되었는지 확인해본다.</p>
+</li>
+<li>
+<p><code>hugo new site devlog</code>로 웹사이트 템플릿을 생성한다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>명령어를 실행하면 환영메세지와 함께 폴더가 생성된다.</p>
+</li>
+<li>
+<p>함께 나오는 설명을 그대로 따라하면 된다.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>cd devlog</code>: 만들어진 블로그 폴더로 들어간다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>hugo new theme solid</code>로 새 테마를 생성한다.</p>
+</li>
+<li>
+<p><code>hugo.toml</code>에 theme을 solid로 설정한다.</p>
+</li>
+<li>
+<p><code>hugo new content thoughts/hello.adoc</code>로 첫 번째 파일을 생성한다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>프론트매터를 자동으로 생성해주니 앞으로 새 포스트를 쓸 때 이 명령어를 사용하자.</p>
+</li>
+<li>
+<p>이 명령어로 포스트 생성 시에 기본으로 초안(draft)모드가 되므로 <code>--buildDrafts</code> 옵션을 사용해야 미리보기에서 볼 수 있다.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>hugo server --buildDrafts</code>로 서버를 실행한다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>asciidoc을 사용하는 경우 whitelist와 관련된 에러가 나올 수 있다.</p>
+<div class="listingblock">
+<div class="title">hugo.toml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="toml"><table class="linenotable"><tbody><tr><td class="linenos gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span style="color: #bb0066;font-weight: bold">[security]</span>
+    <span style="color: #bb0066;font-weight: bold">[security.exec]</span>
+        <span style="color: #336699;font-weight: bold">allow</span> <span style="">=</span> <span style="">[</span><span style="color: #dd2200;background-color: #fff0f0">&#39;^(dart-)?sass(-embedded)?$&#39;</span><span style="">,</span>
+                 <span style="color: #dd2200;background-color: #fff0f0">&#39;^go$&#39;</span><span style="">,</span> <span style="color: #dd2200;background-color: #fff0f0">&#39;^npx$&#39;</span><span style="">,</span> <span style="color: #dd2200;background-color: #fff0f0">&#39;^postcss$&#39;</span><span style="">,</span>
+                 <span style="color: #dd2200;background-color: #fff0f0">&#39;^asciidoctor$&#39;</span><span style="">]</span> <b class="conum">(1)</b>
+</pre></td></tr></tbody></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>가장 마지막에 &#39;^asciidoctor$&#39;를 추가하면 된다.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>이제 실행된 서버 주소에 접속하면 블로그를 볼 수 있다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>파일을 편집하면 서버에 자동으로 갱신된다.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>참고</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://gohugo.io/getting-started/quick-start/">hugo 시작하기 공식문서</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/71058236/hugo-with-asciidoctor">Stackoverflow: Hugo with Asciidoctor</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_블로그_구축하기">블로그 구축하기</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>이제 입맛대로 테마, 관련 설정을 건들여가면서 블로그를 구축해나가면 된다.</p>
+</li>
+<li>
+<p>언어, 타임존, 블로그 타이틀 등을 설정한다.</p>
+<div class="listingblock">
+<div class="title">hugo.toml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="toml"><span style="color: #336699;font-weight: bold">languageCode</span> <span style="">=</span> <span style="color: #dd2200;background-color: #fff0f0">&#39;ko-kr&#39;</span>
+<span style="color: #336699;font-weight: bold">timeZone</span> <span style="">=</span> <span style="color: #dd2200;background-color: #fff0f0">&#39;Asia/Seoul&#39;</span>
+<span style="color: #336699;font-weight: bold">title</span> <span style="">=</span> <span style="color: #dd2200;background-color: #fff0f0">&#39;Devlog&#39;</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Asciidoc을 이용하여 코드 하이라이팅을 사용하려면 Rouge를 이용해야 한다.</p>
+<div class="listingblock">
+<div class="title">hugo.toml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="toml"><table class="linenotable"><tbody><tr><td class="linenos gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span style="color: #bb0066;font-weight: bold">[markup]</span>
+  <span style="color: #bb0066;font-weight: bold">[markup.asciidocExt]</span>
+    <span style="color: #bb0066;font-weight: bold">[markup.asciidocExt.attributes]</span>
+      <span style="color: #336699;font-weight: bold">source-highlighter</span> <span style="">=</span> <span style="color: #dd2200;background-color: #fff0f0">&#39;rouge&#39;</span>
+      <span style="color: #336699;font-weight: bold">rouge-style</span> <span style="">=</span> <span style="color: #dd2200;background-color: #fff0f0">&#39;molokai&#39;</span>
+      <span style="color: #336699;font-weight: bold">rouge-css</span> <span style="">=</span> <span style="color: #dd2200;background-color: #fff0f0">&#39;style&#39;</span>
+</pre></td></tr></tbody></table></code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+  </article>
+
+  </main>
+  <footer>
+    <p class="copyright">Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thoughts on Devlog</title>
+    <link>http://localhost:1313/tags/thoughts/</link>
+    <description>Recent content in Thoughts on Devlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 28 Apr 2024 23:07:12 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>개발 블로그를 시작하며</title>
+      <link>http://localhost:1313/2024/04/hello/</link>
+      <pubDate>Sun, 28 Apr 2024 23:07:12 +0900</pubDate>
+      <guid>http://localhost:1313/2024/04/hello/</guid>
+      <description>개발블로그란 무엇인가 개발블로그는 말그대로 개발과정과 생각들을 적어놓는 곳이다.&#xA;문체 정하기 생각보다 중요한 부분 태도와 관련된 문제랄까&#xA;존댓말 해요 합니다체 듣는이를 상정하고 사용&#xA;이다체 보통 독백&#xA;블로그는 남에게 보여주는 글이다 따라서 존댓말이 더 적합하다 나는 블로그에 나의 사생활이나 독백을 적을 생각은 없다</description>
+    </item>
+  </channel>
+</rss>

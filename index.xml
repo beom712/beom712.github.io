@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Devlog</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content in Home on Devlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 28 Apr 2024 23:07:12 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>블로그를 시작하며</title>
+      <link>http://localhost:1313/2024/04/hello/</link>
+      <pubDate>Sun, 28 Apr 2024 23:07:12 +0900</pubDate>
+      <guid>http://localhost:1313/2024/04/hello/</guid>
+      <description>블로그를 시작한 이유 혼자서 이러저러하게 개발을 하다보면 점점 프로젝트가 방향을 잃고 그 동력을 잃어버리기 일쑤였습니다. 처음에는 무언가 장대한 목표를 가지고 프로젝트를 시작하지만, 계속 하다보면 수많은 장애물과 한계에 부딛혀서 제가 처음에 무엇을 하고 싶었는지도 잊어버리게 되죠. 이것 말고도 문제는 많습니다.</description>
+    </item>
+  </channel>
+</rss>
